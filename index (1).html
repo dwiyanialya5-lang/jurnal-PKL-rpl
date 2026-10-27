@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jurnal PKL RPL - SMKN 2 Cipatujah</title>
+<meta name="description" content="Jurnal harian Praktik Kerja Lapangan (PKL) siswa RPL SMKN 2 Cipatujah. Data tersimpan di browser.">
+<meta name="theme-color" content="#2c3cb0">
+<style>
+:root{
+  --bg:#f4f6fb;--card:#fff;--ink:#1b2236;--muted:#5b647a;--line:#e2e6f0;
+  --brand:#3b4fd8;--brand-dark:#2c3cb0;--brand-soft:#eceefe;
+  --ok:#0f7b4f;--err:#b42318;--err-soft:#fdeceb;--warn:#7a4f00;--warn-soft:#fff4d6;
+  --radius:14px;--shadow:0 1px 2px rgba(20,30,60,.06),0 6px 20px rgba(20,30,60,.06);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:16px}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;color:var(--brand-dark);padding:8px 12px;border-radius:8px;z-index:300}
+.skip:focus{left:8px}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.hero :focus-visible{outline-color:#fff}
+
+/* Header */
+.hero{background:linear-gradient(135deg,#2c3cb0 0%,#3b4fd8 55%,#0e8f8a 100%);color:#fff;padding:26px 0 62px}
+.eyebrow{margin:0 0 4px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.92}
+.hero h1{margin:0;font-size:clamp(1.9rem,6vw,2.8rem);line-height:1.1}
+.hero .sub{margin:6px 0 18px;opacity:.95}
+.identity{display:grid;gap:10px;grid-template-columns:1fr;margin:0 0 18px}
+.identity>div{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);border-radius:12px;padding:10px 12px}
+.identity dt{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;opacity:.9}
+.identity dd{margin:2px 0 0;font-weight:600;overflow-wrap:anywhere}
+.identity dd.empty{font-weight:400;font-style:italic;opacity:.9}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+@media(min-width:600px){.identity{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.identity{grid-template-columns:repeat(3,1fr)}}
+
+main.wrap{margin-top:-34px;padding-bottom:36px;display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+
+/* Kartu */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+.card h2{margin:0 0 4px;font-size:1.15rem}
+.card .hint{margin:0 0 12px;color:var(--muted);font-size:.9rem}
+@media(min-width:720px){.card{padding:22px}}
+.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media(min-width:960px){
+  .layout{grid-template-columns:390px minmax(0,1fr);align-items:start}
+  .form-card{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+}
+
+/* Rekap */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 0}
+@media(min-width:720px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--brand-soft);border-radius:12px;padding:12px}
+.stat b{display:block;font-size:1.6rem;line-height:1.2;color:var(--brand-dark)}
+.stat span{font-size:.85rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;align-items:center;font-size:.85rem;color:var(--muted)}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:2px 10px;color:var(--ink)}
+
+/* Form */
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+label{font-weight:600;font-size:.92rem}
+.req{color:var(--err)}
+.opt{font-weight:400;color:var(--muted);font-size:.85rem}
+input,textarea{font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid #bcc3d6;border-radius:10px;padding:10px 12px;width:100%;min-height:44px}
+input{min-width:0}
+textarea{min-height:96px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(59,79,216,.22)}
+[aria-invalid="true"]{border-color:var(--err);background:#fffafa}
+.err{margin:0;color:var(--err);font-size:.86rem}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.row2>*,.toolbar>*{min-width:0}
+.formmsg{background:var(--err-soft);color:var(--err);border:1px solid #f0b6b1;border-radius:10px;padding:10px 12px;margin:0 0 12px;font-size:.92rem}
+.notice{background:var(--brand-soft);color:var(--brand-dark);border-radius:10px;padding:10px 12px;margin:0 0 12px;font-size:.92rem;font-weight:600}
+.banner{background:var(--warn-soft);color:var(--warn);border:1px solid #f1d98c;border-radius:12px;padding:10px 14px;font-size:.92rem}
+
+/* Tombol */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 16px;border-radius:10px;border:1.5px solid transparent;font:inherit;font-weight:600;font-size:.95rem;cursor:pointer;line-height:1.1}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:var(--brand-dark)}
+.btn-ghost{background:#fff;color:var(--brand-dark);border-color:#bcc3d6}
+.btn-ghost:hover{background:var(--brand-soft)}
+.btn-danger{background:var(--err);color:#fff}
+.btn-danger:hover{background:#912018}
+.btn-danger-ghost{background:#fff;color:var(--err);border-color:#f0b6b1}
+.btn-danger-ghost:hover{background:var(--err-soft)}
+.btn-light{background:#fff;color:var(--brand-dark)}
+.btn-light:hover{background:#eef0ff}
+.btn-outline-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
+.btn-outline-light:hover{background:rgba(255,255,255,.16)}
+.btn-sm{min-height:38px;padding:0 12px;font-size:.88rem}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.actions .btn-primary{flex:1 1 170px}
+
+/* Toolbar & daftar */
+.list-head{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:flex-start}
+.toolbar{display:grid;gap:10px;grid-template-columns:minmax(0,1fr);margin:8px 0 4px;align-items:end}
+.toolbar .field{margin-bottom:0}
+@media(min-width:720px){.toolbar{grid-template-columns:1.3fr 1.7fr auto}}
+.count{margin:6px 0 0;color:var(--muted);font-size:.88rem;min-height:1.3em}
+.entries{display:grid;gap:12px;margin-top:10px}
+.entry{border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:12px;padding:14px;background:#fff}
+.entry.flash{animation:flash 1.8s ease}
+@keyframes flash{0%{background:#fff3bf}100%{background:#fff}}
+.entry-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.entry-head h3{margin:0;font-size:1.02rem}
+.meta{margin:2px 0 0;color:var(--muted);font-size:.88rem}
+.badge{background:var(--warn-soft);color:var(--warn);font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.entry h4{margin:12px 0 2px;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.txt{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.none{color:var(--muted);font-style:italic}
+.entry-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.empty-state{text-align:center;padding:28px 12px;border:2px dashed var(--line);border-radius:12px;color:var(--muted);margin-top:10px}
+.empty-state h3{color:var(--ink);margin:6px 0}
+.empty-state p{margin:0 0 14px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+footer{padding:0 0 28px;text-align:center;color:var(--muted);font-size:.85rem}
+
+/* Toast */
+#toasts{position:fixed;left:0;right:0;bottom:12px;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 12px;z-index:400;pointer-events:none}
+.toast{pointer-events:auto;display:flex;gap:10px;align-items:flex-start;width:min(100%,460px);padding:12px 14px;border-radius:12px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--brand);box-shadow:0 8px 28px rgba(20,30,60,.24);font-size:.93rem}
+.toast.ok{border-left-color:var(--ok)}
+.toast.error{border-left-color:var(--err)}
+.toast .ic{font-weight:800;color:var(--brand)}
+.toast.ok .ic{color:var(--ok)}
+.toast.error .ic{color:var(--err)}
+.toast p{margin:0;flex:1}
+.toast button{background:none;border:0;font-size:1.25rem;line-height:1;cursor:pointer;color:var(--muted);min-width:28px;min-height:28px}
+
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(15,20,40,.55);display:flex;align-items:flex-end;justify-content:center;z-index:350}
+.modal-box{background:#fff;width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:20px}
+@media(min-width:600px){.modal{align-items:center;padding:16px}.modal-box{border-radius:16px}}
+.modal-box h2{margin:0 0 6px;font-size:1.2rem}
+.modal-box p.lead{margin:0 0 14px;color:var(--muted)}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:10px}
+body.modal-open{overflow:hidden}
+
+/* Area cetak (tersembunyi di layar) */
+.print-only{display:none}
+
+@media print{
+  @page{size:A4 landscape;margin:12mm}
+  html,body{background:#fff!important;color:#000!important}
+  body{font-size:11pt}
+  .hero,main,footer,#toasts,.modal,.skip,noscript{display:none!important}
+  .print-only{display:block!important}
+  .p-title{text-align:center;margin:0;font-size:16pt}
+  .p-sub{text-align:center;margin:2px 0 10px;font-size:10.5pt}
+  table.p-id{border-collapse:collapse;margin-bottom:8px;font-size:10pt}
+  table.p-id td{padding:1px 8px 1px 0;vertical-align:top}
+  table.p-id td.k{white-space:nowrap;font-weight:700}
+  .p-note{font-size:9.5pt;margin:4px 0}
+  table.p-table{width:100%;border-collapse:collapse;font-size:9.5pt}
+  .p-table th,.p-table td{border:1px solid #333;padding:4px 6px;vertical-align:top;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere}
+  .p-table th{background:#e6e6e6!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .p-table thead{display:table-header-group}
+  .p-table th:nth-child(1),.p-table td:nth-child(1){width:9mm;white-space:nowrap;text-align:center}
+  .p-table th:nth-child(2),.p-table td:nth-child(2){width:34mm}
+  .p-table th:nth-child(3),.p-table td:nth-child(3){width:24mm;white-space:nowrap}
+  .p-table tr{break-inside:avoid;page-break-inside:avoid}
+  .p-sign{display:flex;justify-content:space-between;gap:24px;margin-top:22px;break-inside:avoid;page-break-inside:avoid}
+  .p-sign div{flex:1;text-align:center;font-size:10pt}
+  .p-sign .line{height:62px}
+  .p-foot{margin-top:10px;font-size:9pt;text-align:right}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#formCard">Lompat ke form jurnal</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">SMKN 2 Cipatujah · Program Keahlian RPL</p>
+    <h1>Jurnal PKL</h1>
+    <p class="sub">Rekayasa Perangkat Lunak — catatan harian Praktik Kerja Lapangan</p>
+    <dl class="identity" id="identity"></dl>
+    <div class="hero-actions">
+      <button type="button" class="btn btn-light" id="btnProfile">Ubah Identitas</button>
+      <button type="button" class="btn btn-outline-light" data-print>Cetak Jurnal</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <noscript><div class="banner">Aplikasi ini membutuhkan JavaScript. Aktifkan JavaScript di browser Anda.</div></noscript>
+  <div class="banner" id="storageWarn" role="alert" hidden>Penyimpanan browser tidak tersedia (mode privat atau diblokir). Data hanya bertahan selama halaman ini terbuka. Gunakan tombol Ekspor untuk membuat cadangan.</div>
+
+  <section class="card" aria-labelledby="rekapTitle">
+    <h2 id="rekapTitle">Rekap Jurnal</h2>
+    <p class="hint">Dihitung dari seluruh jurnal yang tersimpan.</p>
+    <div class="stats" id="stats"></div>
+    <div class="chips" id="monthChips"></div>
+  </section>
+
+  <div class="layout">
+    <section class="card form-card" id="formCard" aria-labelledby="formTitle">
+      <h2 id="formTitle">Tambah Jurnal</h2>
+      <p class="hint">Kolom bertanda <span class="req">*</span> wajib diisi.</p>
+      <p class="notice" id="editNotice" hidden></p>
+      <p class="formmsg" id="formMsg" role="alert" hidden></p>
+      <form id="entryForm" novalidate autocomplete="off">
+        <div class="field">
+          <label for="f-tanggal">Tanggal <span class="req">*</span></label>
+          <input type="date" id="f-tanggal" required aria-describedby="err-f-tanggal">
+          <p class="err" id="err-f-tanggal" hidden></p>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="f-mulai">Jam mulai <span class="req">*</span></label>
+            <input type="time" id="f-mulai" required aria-describedby="err-f-mulai">
+            <p class="err" id="err-f-mulai" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-selesai">Jam selesai <span class="req">*</span></label>
+            <input type="time" id="f-selesai" required aria-describedby="err-f-selesai">
+            <p class="err" id="err-f-selesai" hidden></p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-kegiatan">Kegiatan / pekerjaan <span class="req">*</span></label>
+          <textarea id="f-kegiatan" maxlength="1000" required aria-describedby="err-f-kegiatan" placeholder="Contoh: Membuat halaman login responsif untuk aplikasi internal."></textarea>
+          <p class="err" id="err-f-kegiatan" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-hasil">Hasil / kompetensi yang dipelajari <span class="req">*</span></label>
+          <textarea id="f-hasil" maxlength="1000" required aria-describedby="err-f-hasil" placeholder="Contoh: Memahami validasi form dan layout responsif dengan CSS Grid."></textarea>
+          <p class="err" id="err-f-hasil" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-kendala">Kendala <span class="opt">(opsional)</span></label>
+          <textarea id="f-kendala" maxlength="1000" aria-describedby="err-f-kendala"></textarea>
+          <p class="err" id="err-f-kendala" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-rencana">Rencana tindak lanjut <span class="opt">(opsional)</span></label>
+          <textarea id="f-rencana" maxlength="1000" aria-describedby="err-f-rencana"></textarea>
+          <p class="err" id="err-f-rencana" hidden></p>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Simpan Jurnal</button>
+          <button type="button" class="btn btn-ghost" id="cancelBtn">Kosongkan Form</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="listTitle">
+      <div class="list-head">
+        <div>
+          <h2 id="listTitle" tabindex="-1">Daftar Jurnal</h2>
+          <p class="hint" style="margin-bottom:0">Urut dari tanggal terbaru.</p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm" data-print>Cetak Jurnal</button>
+      </div>
+      <div class="toolbar" role="search">
+        <div class="field">
+          <label for="q">Cari jurnal</label>
+          <input type="search" id="q" placeholder="Kata kunci kegiatan, hasil, kendala…" autocomplete="off">
+        </div>
+        <div class="row2">
+          <div class="field" style="margin-bottom:0">
+            <label for="fromDate">Dari tanggal</label>
+            <input type="date" id="fromDate">
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label for="toDate">Sampai tanggal</label>
+            <input type="date" id="toDate">
+          </div>
+        </div>
+        <button type="button" class="btn btn-ghost" id="btnResetFilter">Reset Filter</button>
+      </div>
+      <p class="err" id="filterError" role="alert" hidden></p>
+      <p class="count" id="countInfo" aria-live="polite"></p>
+      <div class="entries" id="entryList"></div>
+      <div id="emptyBox" hidden></div>
+    </section>
+  </div>
+
+  <section class="card" aria-labelledby="dataTitle">
+    <h2 id="dataTitle">Data &amp; Cadangan</h2>
+    <p class="hint">Data tersimpan hanya di browser perangkat ini. Buat cadangan secara berkala.</p>
+    <div class="tools">
+      <button type="button" class="btn btn-ghost" id="btnExport">Ekspor Cadangan (.json)</button>
+      <button type="button" class="btn btn-ghost" id="btnImport">Impor Cadangan</button>
+      <button type="button" class="btn btn-danger-ghost" id="btnClearSample">Hapus Data Contoh</button>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Jurnal PKL RPL · SMKN 2 Cipatujah · Data contoh bersifat fiktif.</div></footer>
+
+<div id="printArea" class="print-only" aria-hidden="true"></div>
+<div id="toasts"></div>
+
+<!-- Modal identitas -->
+<div class="modal" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileTitle" hidden>
+  <div class="modal-box">
+    <h2 id="profileTitle">Ubah Identitas PKL</h2>
+    <p class="lead">Data ini tampil di header dan pada hasil cetak.</p>
+    <form id="profileForm" novalidate autocomplete="off">
+      <div class="field">
+        <label for="p-nama">Nama siswa <span class="req">*</span></label>
+        <input type="text" id="p-nama" maxlength="120" required aria-describedby="err-p-nama" data-autofocus>
+        <p class="err" id="err-p-nama" hidden></p>
+      </div>
+      <div class="field">
+        <label for="p-kelas">Kelas <span class="req">*</span></label>
+        <input type="text" id="p-kelas" maxlength="120" required aria-describedby="err-p-kelas" placeholder="Contoh: XII RPL 1">
+        <p class="err" id="err-p-kelas" hidden></p>
+      </div>
+      <div class="field">
+        <label for="p-tempat">Tempat PKL <span class="req">*</span></label>
+        <input type="text" id="p-tempat" maxlength="120" required aria-describedby="err-p-tempat">
+        <p class="err" id="err-p-tempat" hidden></p>
+      </div>
+      <div class="field">
+        <label for="p-pembimbing">Pembimbing lapangan <span class="req">*</span></label>
+        <input type="text" id="p-pembimbing" maxlength="120" required aria-describedby="err-p-pembimbing">
+        <p class="err" id="err-p-pembimbing" hidden></p>
+      </div>
+      <div class="field">
+        <label for="p-guru">Guru pembimbing sekolah <span class="opt">(opsional)</span></label>
+        <input type="text" id="p-guru" maxlength="120" aria-describedby="err-p-guru">
+        <p class="err" id="err-p-guru" hidden></p>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="p-mulai">Mulai PKL <span class="req">*</span></label>
+          <input type="date" id="p-mulai" required aria-describedby="err-p-mulai">
+          <p class="err" id="err-p-mulai" hidden></p>
+        </div>
+        <div class="field">
+          <label for="p-selesai">Selesai PKL <span class="req">*</span></label>
+          <input type="date" id="p-selesai" required aria-describedby="err-p-selesai">
+          <p class="err" id="err-p-selesai" hidden></p>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="profileCancel">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan Identitas</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal konfirmasi -->
+<div class="modal" id="confirmModal" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmMsg" hidden>
+  <div class="modal-box">
+    <h2 id="confirmTitle">Konfirmasi</h2>
+    <p class="lead" id="confirmMsg"></p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" id="confirmCancel" data-autofocus>Batal</button>
+      <button type="button" class="btn btn-danger" id="confirmOk">Ya, lanjutkan</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- Konstanta & state ---------- */
+  var KEY_PROFILE = 'jurnalPKL.identitas.v1';
+  var KEY_ENTRIES = 'jurnalPKL.jurnal.v1';
+  var KEY_SEEDED = 'jurnalPKL.seeded.v1';
+  var ENTRY_FIELDS = ['tanggal', 'mulai', 'selesai', 'kegiatan', 'hasil', 'kendala', 'rencana'];
+  var PROFILE_FIELDS = ['nama', 'kelas', 'tempat', 'pembimbing', 'guru', 'mulai', 'selesai'];
+  var MAXLEN = 1000;
+  var HARI = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+  var BULAN = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+  var BULAN_S = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+
+  var entries = [];
+  var profile = {};
+  var editingId = null;
+  var confirmCb = null;
+
+  /* ---------- Utilitas ---------- */
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function toISO(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function shiftDays(d, n) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); }
+  function parseISO(s) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || '');
+    if (!m) return null;
+    var d = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (d.getFullYear() !== +m[1] || d.getMonth() !== +m[2] - 1 || d.getDate() !== +m[3]) return null;
+    return d;
+  }
+  function fmtDate(s) {
+    var d = parseISO(s);
+    return d ? HARI[d.getDay()] + ', ' + d.getDate() + ' ' + BULAN[d.getMonth()] + ' ' + d.getFullYear() : s;
+  }
+  function fmtShort(s) {
+    var d = parseISO(s);
+    return d ? d.getDate() + ' ' + BULAN[d.getMonth()] + ' ' + d.getFullYear() : s;
+  }
+  function toMin(t) {
+    var m = /^(\d{2}):(\d{2})$/.exec(t || '');
+    if (!m) return null;
+    var h = +m[1], mi = +m[2];
+    if (h > 23 || mi > 59) return null;
+    return h * 60 + mi;
+  }
+  function durMin(e) { return Math.max(0, (toMin(e.selesai) || 0) - (toMin(e.mulai) || 0)); }
+  function fmtDur(min) {
+    var h = Math.floor(min / 60), m = min % 60;
+    return h + ' j' + (m ? ' ' + m + ' m' : '');
+  }
+  function newId() { return 'j' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+  function str(v, max) { return typeof v === 'string' ? v.slice(0, max) : ''; }
+  function smooth() {
+    return (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ? 'auto' : 'smooth';
+  }
+
+  /* ---------- Penyimpanan (localStorage dengan cadangan memori) ---------- */
+  var memory = {};
+  var storageOK = (function () {
+    try {
+      var k = '__jurnal_test__';
+      window.localStorage.setItem(k, '1');
+      window.localStorage.removeItem(k);
+      return true;
+    } catch (e) { return false; }
+  })();
+
+  function load(key, fallback) {
+    try {
+      var raw = storageOK ? window.localStorage.getItem(key) : memory[key];
+      if (raw == null) return fallback;
+      return JSON.parse(raw);
+    } catch (e) { return fallback; }
+  }
+  function save(key, val) {
+    var s = JSON.stringify(val);
+    if (!storageOK) { memory[key] = s; return true; }
+    try { window.localStorage.setItem(key, s); return true; } catch (e) { return false; }
+  }
+
+  /* ---------- Normalisasi data ---------- */
+  function normalizeEntry(o) {
+    if (!o || typeof o !== 'object') return null;
+    var e = {
+      id: (typeof o.id === 'string' && o.id) ? o.id.slice(0, 64) : newId(),
+      tanggal: str(o.tanggal, 10),
+      mulai: str(o.mulai, 5),
+      selesai: str(o.selesai, 5),
+      kegiatan: str(o.kegiatan, MAXLEN),
+      hasil: str(o.hasil, MAXLEN),
+      kendala: str(o.kendala, MAXLEN),
+      rencana: str(o.rencana, MAXLEN),
+      contoh: o.contoh === true,
+      dibuat: typeof o.dibuat === 'number' ? o.dibuat : Date.now()
+    };
+    if (!parseISO(e.tanggal) || toMin(e.mulai) === null || toMin(e.selesai) === null || !e.kegiatan.trim()) return null;
+    return e;
+  }
+  function normalizeProfile(o) {
+    o = (o && typeof o === 'object') ? o : {};
+    var p = {
+      nama: str(o.nama, 120).trim(),
+      kelas: str(o.kelas, 120).trim(),
+      tempat: str(o.tempat, 120).trim(),
+      pembimbing: str(o.pembimbing, 120).trim(),
+      guru: str(o.guru, 120).trim(),
+      mulai: parseISO(str(o.mulai, 10)) ? o.mulai : '',
+      selesai: parseISO(str(o.selesai, 10)) ? o.selesai : '',
+      contoh: o.contoh === true
+    };
+    return p;
+  }
+  function isProfileEmpty(p) {
+    return !(p.nama || p.kelas || p.tempat || p.pembimbing || p.guru || p.mulai || p.selesai);
+  }
+
+  /* ---------- Toast ---------- */
+  function toast(type, msg) {
+    var box = $('toasts');
+    var t = document.createElement('div');
+    t.className = 'toast ' + type;
+    t.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    var ic = document.createElement('span');
+    ic.className = 'ic';
+    ic.setAttribute('aria-hidden', 'true');
+    ic.textContent = type === 'ok' ? '✓' : (type === 'error' ? '!' : 'i');
+    var p = document.createElement('p');
+    p.textContent = msg;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Tutup pesan');
+    b.textContent = '×';
+    function remove() { if (t.parentNode) t.parentNode.removeChild(t); }
+    b.addEventListener('click', remove);
+    t.appendChild(ic); t.appendChild(p); t.appendChild(b);
+    box.appendChild(t);
+    while (box.children.length > 4) box.removeChild(box.firstChild);
+    setTimeout(remove, type === 'error' ? 7000 : 4500);
+  }
+
+  /* ---------- Modal ---------- */
+  var openModalEl = null, lastFocus = null;
+  function openModal(el) {
+    lastFocus = document.activeElement;
+    el.hidden = false;
+    openModalEl = el;
+    document.body.classList.add('modal-open');
+    var f = el.querySelector('[data-autofocus]') || el.querySelector('button, input, textarea');
+    if (f) f.focus();
+  }
+  function closeModal() {
+    if (!openModalEl) return;
+    openModalEl.hidden = true;
+    openModalEl = null;
+    confirmCb = null;
+    document.body.classList.remove('modal-open');
+    if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+  }
+  function askConfirm(opts) {
+    $('confirmTitle').textContent = opts.title;
+    $('confirmMsg').textContent = opts.message;
+    $('confirmOk').textContent = opts.okLabel || 'Ya, lanjutkan';
+    $('confirmOk').className = 'btn ' + (opts.danger ? 'btn-danger' : 'btn-primary');
+    confirmCb = opts.onConfirm;
+    openModal($('confirmModal'));
+  }
+  document.addEventListener('keydown', function (e) {
+    if (!openModalEl) return;
+    if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
+    if (e.key === 'Tab') {
+      var nodes = Array.prototype.slice.call(openModalEl.querySelectorAll('button, input, textarea, [href]'))
+        .filter(function (n) { return !n.disabled && !n.hidden; });
+      if (!nodes.length) return;
+      var first = nodes[0], last = nodes[nodes.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  ['profileModal', 'confirmModal'].forEach(function (id) {
+    $(id).addEventListener('mousedown', function (e) { if (e.target === $(id)) closeModal(); });
+  });
+  $('confirmCancel').addEventListener('click', closeModal);
+  $('profileCancel').addEventListener('click', closeModal);
+  $('confirmOk').addEventListener('click', function () {
+    var cb = confirmCb;
+    confirmCb = null;
+    closeModal();
+    if (cb) cb();
+  });
+
+  /* ---------- Validasi & tampilan error ---------- */
+  function showErrors(map, prefix, fields) {
+    var first = null;
+    fields.forEach(function (k) {
+      var el = $(prefix + k), er = $('err-' + prefix + k);
+      if (!el || !er) return;
+      if (map[k]) {
+        er.textContent = map[k];
+        er.hidden = false;
+        el.setAttribute('aria-invalid', 'true');
+        if (!first) first = el;
+      } else {
+        er.textContent = '';
+        er.hidden = true;
+        el.removeAttribute('aria-invalid');
+      }
+    });
+    return first;
+  }
+  function bindClear(formId) {
+    $(formId).addEventListener('input', function (ev) {
+      var id = ev.target.id;
+      if (!id) return;
+      var er = $('err-' + id);
+      if (er) { er.hidden = true; er.textContent = ''; }
+      ev.target.removeAttribute('aria-invalid');
+    });
+  }
+  bindClear('entryForm');
+  bindClear('profileForm');
+  function setFormMsg(text) {
+    $('formMsg').textContent = text || '';
+    $('formMsg').hidden = !text;
+  }
+
+  function validateEntry(d) {
+    var e = {};
+    if (!d.tanggal) e.tanggal = 'Tanggal wajib diisi.';
+    else if (!parseISO(d.tanggal)) e.tanggal = 'Tanggal tidak valid.';
+    else if (profile.mulai && profile.selesai && (d.tanggal < profile.mulai || d.tanggal > profile.selesai)) {
+      e.tanggal = 'Tanggal di luar periode PKL (' + fmtShort(profile.mulai) + ' – ' + fmtShort(profile.selesai) + '). Ubah periode lewat tombol "Ubah Identitas" jika perlu.';
+    }
+    var m1 = toMin(d.mulai), m2 = toMin(d.selesai);
+    if (!d.mulai) e.mulai = 'Jam mulai wajib diisi.';
+    else if (m1 === null) e.mulai = 'Jam mulai tidak valid.';
+    if (!d.selesai) e.selesai = 'Jam selesai wajib diisi.';
+    else if (m2 === null) e.selesai = 'Jam selesai tidak valid.';
+    else if (m1 !== null && m2 <= m1) e.selesai = 'Jam selesai harus setelah jam mulai.';
+    if (!d.kegiatan) e.kegiatan = 'Kegiatan wajib diisi.';
+    else if (d.kegiatan.length < 10) e.kegiatan = 'Uraikan kegiatan minimal 10 karakter.';
+    if (!d.hasil) e.hasil = 'Hasil/kompetensi wajib diisi.';
+    else if (d.hasil.length < 10) e.hasil = 'Uraikan hasil/kompetensi minimal 10 karakter.';
+    if (d.kendala.length > MAXLEN) e.kendala = 'Maksimal ' + MAXLEN + ' karakter.';
+    if (d.rencana.length > MAXLEN) e.rencana = 'Maksimal ' + MAXLEN + ' karakter.';
+    return e;
+  }
+  function validateProfile(d) {
+    var e = {};
+    if (!d.nama) e.nama = 'Nama siswa wajib diisi.';
+    if (!d.kelas) e.kelas = 'Kelas wajib diisi.';
+    if (!d.tempat) e.tempat = 'Tempat PKL wajib diisi.';
+    if (!d.pembimbing) e.pembimbing = 'Nama pembimbing lapangan wajib diisi.';
+    if (!d.mulai) e.mulai = 'Tanggal mulai wajib diisi.';
+    if (!d.selesai) e.selesai = 'Tanggal selesai wajib diisi.';
+    else if (d.mulai && d.selesai < d.mulai) e.selesai = 'Tanggal selesai tidak boleh sebelum tanggal mulai.';
+    return e;
+  }
+
+  /* ---------- Commit data ---------- */
+  function commitEntries(next) {
+    if (!save(KEY_ENTRIES, next)) {
+      toast('error', 'Gagal menyimpan ke penyimpanan browser (mungkin penuh atau diblokir). Perubahan dibatalkan.');
+      return false;
+    }
+    entries = next;
+    return true;
+  }
+  function commitProfile(p) {
+    if (!save(KEY_PROFILE, p)) {
+      toast('error', 'Gagal menyimpan identitas ke penyimpanan browser.');
+      return false;
+    }
+    profile = p;
+    return true;
+  }
+  function findEntry(id) {
+    for (var i = 0; i < entries.length; i++) if (entries[i].id === id) return entries[i];
+    return null;
+  }
+
+  /* ---------- Data contoh (fiktif) ---------- */
+  function lastWeekdays(n) {
+    var out = [], d = new Date();
+    d = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    while (out.length < n) {
+      var w = d.getDay();
+      if (w !== 0 && w !== 6) out.unshift(toISO(d));
+      d = shiftDays(d, -1);
+    }
+    return out;
+  }
+  function seedSample() {
+    var days = lastWeekdays(4);
+    var now = Date.now();
+    var add = [
+      { tanggal: days[0], mulai: '08:00', selesai: '16:00',
+        kegiatan: 'Pengenalan lingkungan kerja dan penyiapan perangkat: instalasi Git dan VS Code, serta clone repositori proyek latihan.',
+        hasil: 'Memahami alur kerja Git dasar (branch, commit, pull request) dan struktur folder proyek tim.',
+        kendala: 'Koneksi VPN kantor sempat gagal saat akan mengakses repositori.',
+        rencana: 'Meminta panduan konfigurasi VPN kepada pembimbing lapangan.' },
+      { tanggal: days[1], mulai: '08:00', selesai: '16:00',
+        kegiatan: 'Membuat halaman dasbor internal menggunakan HTML dan CSS Grid dengan tampilan responsif.',
+        hasil: 'Menguasai layout responsif (media query, grid) dan penamaan kelas CSS yang rapi.',
+        kendala: '',
+        rencana: 'Menambahkan interaksi dengan JavaScript pada tabel data.' },
+      { tanggal: days[2], mulai: '08:30', selesai: '15:30',
+        kegiatan: 'Mempelajari query SQL dasar (SELECT, JOIN, GROUP BY) pada basis data latihan dan menyusun dokumentasi endpoint API.',
+        hasil: 'Mampu menulis query JOIN sederhana dan mendokumentasikan endpoint dengan format yang disepakati tim.',
+        kendala: 'Masih bingung membedakan LEFT JOIN dan INNER JOIN pada data yang tidak lengkap.',
+        rencana: 'Berlatih membuat 5 query JOIN tambahan dan konsultasi hasilnya.' },
+      { tanggal: days[3], mulai: '08:00', selesai: '16:00',
+        kegiatan: 'Menguji formulir pendaftaran: mencoba berbagai input tidak valid dan melaporkan bug ke daftar isu tim.',
+        hasil: 'Memahami dasar pengujian manual dan cara menulis laporan bug yang jelas (langkah, hasil, ekspektasi).',
+        kendala: '',
+        rencana: 'Mencoba menulis kasus uji otomatis sederhana.' }
+    ].map(function (o, i) {
+      return Object.assign({ id: newId(), contoh: true, dibuat: now + i }, o);
+    });
+    var nextEntries = entries.concat(add);
+    if (!save(KEY_ENTRIES, nextEntries)) return false;
+    entries = nextEntries;
+    if (isProfileEmpty(profile)) {
+      var first = parseISO(days[0]);
+      var p = {
+        nama: 'Andi Contoh Pratama', kelas: 'XII RPL 1',
+        tempat: 'PT Contoh Digital Kreasi (fiktif)',
+        pembimbing: 'Bu Sari Wulandari, S.Kom. (contoh)',
+        guru: 'Pak Dedi Kurniawan, S.Pd. (contoh)',
+        mulai: toISO(shiftDays(first, -14)), selesai: toISO(shiftDays(first, 75)),
+        contoh: true
+      };
+      if (save(KEY_PROFILE, p)) profile = p;
+    }
+    return true;
+  }
+
+  /* ---------- Filter ---------- */
+  function getFiltered() {
+    var q = $('q').value.trim().toLowerCase();
+    var from = $('fromDate').value, to = $('toDate').value;
+    var res = { list: [], err: '', active: !!(q || from || to) };
+    if (from && to && from > to) {
+      res.err = 'Tanggal "Dari" tidak boleh setelah tanggal "Sampai".';
+      return res;
+    }
+    var terms = q ? q.split(/\s+/) : [];
+    res.list = entries.filter(function (e) {
+      if (from && e.tanggal < from) return false;
+      if (to && e.tanggal > to) return false;
+      if (terms.length) {
+        var hay = [fmtDate(e.tanggal), e.tanggal, e.mulai, e.selesai, e.kegiatan, e.hasil, e.kendala, e.rencana].join('\n').toLowerCase();
+        for (var i = 0; i < terms.length; i++) if (hay.indexOf(terms[i]) === -1) return false;
+      }
+      return true;
+    }).sort(function (a, b) {
+      return b.tanggal.localeCompare(a.tanggal) || b.mulai.localeCompare(a.mulai) || (b.dibuat - a.dibuat);
+    });
+    return res;
+  }
+
+  /* ---------- Render ---------- */
+  function periodeText() {
+    if (!profile.mulai && !profile.selesai) return '';
+    return (profile.mulai ? fmtShort(profile.mulai) : '…') + ' – ' + (profile.selesai ? fmtShort(profile.selesai) : '…');
+  }
+  function renderIdentity() {
+    var items = [
+      ['Nama Siswa', profile.nama], ['Kelas', profile.kelas], ['Tempat PKL', profile.tempat],
+      ['Pembimbing Lapangan', profile.pembimbing], ['Guru Pembimbing', profile.guru], ['Periode PKL', periodeText()]
+    ];
+    $('identity').innerHTML = items.map(function (it) {
+      return '<div><dt>' + esc(it[0]) + '</dt><dd' + (it[1] ? '' : ' class="empty"') + '>' + (it[1] ? esc(it[1]) : 'Belum diisi') + '</dd></div>';
+    }).join('');
+  }
+  function renderRecap() {
+    var days = {}, months = {}, minutes = 0, kendala = 0;
+    entries.forEach(function (e) {
+      days[e.tanggal] = true;
+      var mk = e.tanggal.slice(0, 7);
+      months[mk] = (months[mk] || 0) + 1;
+      minutes += durMin(e);
+      if (e.kendala.trim()) kendala++;
+    });
+    var stats = [
+      [entries.length, 'Total jurnal'],
+      [Object.keys(days).length, 'Hari tercatat'],
+      [fmtDur(minutes), 'Total jam kerja'],
+      [kendala, 'Jurnal dengan kendala']
+    ];
+    $('stats').innerHTML = stats.map(function (s) {
+      return '<div class="stat"><b>' + esc(s[0]) + '</b><span>' + esc(s[1]) + '</span></div>';
+    }).join('');
+    var keys = Object.keys(months).sort();
+    $('monthChips').innerHTML = keys.length
+      ? '<span>Per bulan:</span>' + keys.map(function (k) {
+          var y = k.slice(0, 4), m = +k.slice(5, 7);
+          return '<span class="chip">' + esc(BULAN_S[m - 1] + ' ' + y) + ': <b>' + months[k] + '</b></span>';
+        }).join('')
+      : '';
+  }
+  function textOrNone(s) {
+    return s && s.trim() ? '<p class="txt">' + esc(s) + '</p>' : '<p class="txt none">—</p>';
+  }
+  function entryHTML(e) {
+    var lbl = fmtShort(e.tanggal);
+    return '<article class="entry" data-id="' + esc(e.id) + '">' +
+      '<div class="entry-head"><div><h3>' + esc(fmtDate(e.tanggal)) + '</h3>' +
+      '<p class="meta">' + esc(e.mulai) + ' – ' + esc(e.selesai) + ' · ' + esc(fmtDur(durMin(e))) + '</p></div>' +
+      (e.contoh ? '<span class="badge">Contoh</span>' : '') + '</div>' +
+      '<h4>Kegiatan</h4>' + textOrNone(e.kegiatan) +
+      '<h4>Hasil / kompetensi</h4>' + textOrNone(e.hasil) +
+      '<h4>Kendala</h4>' + textOrNone(e.kendala) +
+      '<h4>Rencana tindak lanjut</h4>' + textOrNone(e.rencana) +
+      '<div class="entry-actions">' +
+      '<button type="button" class="btn btn-ghost btn-sm" data-action="edit" data-id="' + esc(e.id) + '" aria-label="Edit jurnal ' + esc(lbl) + '">Edit</button>' +
+      '<button type="button" class="btn btn-danger-ghost btn-sm" data-action="delete" data-id="' + esc(e.id) + '" aria-label="Hapus jurnal ' + esc(lbl) + '">Hapus</button>' +
+      '</div></article>';
+  }
+  var NO_DATA_HTML = '<div class="empty-state"><div aria-hidden="true" style="font-size:2rem">📓</div>' +
+    '<h3>Belum ada jurnal</h3><p>Isi form jurnal untuk membuat catatan pertama, atau coba dulu dengan data contoh.</p>' +
+    '<button type="button" class="btn btn-ghost" data-action="load-sample">Muat Data Contoh</button></div>';
+  var NO_MATCH_HTML = '<div class="empty-state"><div aria-hidden="true" style="font-size:2rem">🔍</div>' +
+    '<h3>Tidak ada jurnal yang cocok</h3><p>Ubah kata kunci atau rentang tanggal.</p>' +
+    '<button type="button" class="btn btn-ghost" data-action="reset-filter">Reset Filter</button></div>';
+
+  function renderList() {
+    var r = getFiltered();
+    $('filterError').hidden = !r.err;
+    $('filterError').textContent = r.err;
+    $('countInfo').textContent = entries.length
+      ? 'Menampilkan ' + r.list.length + ' dari ' + entries.length + ' jurnal' + (r.active ? ' (filter aktif)' : '')
+      : '';
+    if (!r.list.length) {
+      $('entryList').innerHTML = '';
+      $('emptyBox').hidden = false;
+      $('emptyBox').innerHTML = entries.length ? NO_MATCH_HTML : NO_DATA_HTML;
+    } else {
+      $('emptyBox').hidden = true;
+      $('emptyBox').innerHTML = '';
+      $('entryList').innerHTML = r.list.map(entryHTML).join('');
+    }
+    renderPrint(r);
+  }
+  function renderPrint(r) {
+    r = r || getFiltered();
+    var list = r.list.slice().sort(function (a, b) {
+      return a.tanggal.localeCompare(b.tanggal) || a.mulai.localeCompare(b.mulai) || (a.dibuat - b.dibuat);
+    });
+    var v = function (s) { return s ? esc(s) : '-'; };
+    var rows = list.map(function (e, i) {
+      return '<tr><td>' + (i + 1) + '</td><td>' + esc(fmtDate(e.tanggal)) + '</td><td>' + esc(e.mulai) + ' – ' + esc(e.selesai) + '</td>' +
+        '<td>' + v(e.kegiatan) + '</td><td>' + v(e.hasil) + '</td><td>' + v(e.kendala) + '</td><td>' + v(e.rencana) + '</td></tr>';
+    }).join('');
+    var filterNote = '';
+    if (r.active) {
+      var parts = [];
+      if ($('q').value.trim()) parts.push('kata kunci "' + $('q').value.trim() + '"');
+      if ($('fromDate').value) parts.push('dari ' + fmtShort($('fromDate').value));
+      if ($('toDate').value) parts.push('sampai ' + fmtShort($('toDate').value));
+      filterNote = '<p class="p-note">Catatan: hanya menampilkan jurnal dengan filter ' + esc(parts.join(', ')) + '.</p>';
+    }
+    $('printArea').innerHTML =
+      '<h1 class="p-title">JURNAL KEGIATAN PRAKTIK KERJA LAPANGAN (PKL)</h1>' +
+      '<p class="p-sub">SMKN 2 Cipatujah · Program Keahlian Rekayasa Perangkat Lunak (RPL)</p>' +
+      '<table class="p-id"><tbody>' +
+      '<tr><td class="k">Nama Siswa</td><td>: ' + v(profile.nama) + '</td><td class="k">Tempat PKL</td><td>: ' + v(profile.tempat) + '</td></tr>' +
+      '<tr><td class="k">Kelas</td><td>: ' + v(profile.kelas) + '</td><td class="k">Pembimbing Lapangan</td><td>: ' + v(profile.pembimbing) + '</td></tr>' +
+      '<tr><td class="k">Periode PKL</td><td>: ' + v(periodeText()) + '</td><td class="k">Guru Pembimbing</td><td>: ' + v(profile.guru) + '</td></tr>' +
+      '</tbody></table>' + filterNote +
+      '<table class="p-table"><thead><tr><th>No</th><th>Hari/Tanggal</th><th>Jam</th><th>Kegiatan</th><th>Hasil / Kompetensi</th><th>Kendala</th><th>Rencana Tindak Lanjut</th></tr></thead><tbody>' +
+      rows + '</tbody></table>' +
+      '<div class="p-sign"><div>Siswa<div class="line"></div><b>' + v(profile.nama) + '</b></div>' +
+      '<div>Pembimbing Lapangan<div class="line"></div><b>' + v(profile.pembimbing) + '</b></div>' +
+      '<div>Guru Pembimbing<div class="line"></div><b>' + v(profile.guru) + '</b></div></div>' +
+      '<p class="p-foot">Dicetak pada ' + esc(fmtShort(toISO(new Date()))) + '</p>';
+  }
+  function render() {
+    renderIdentity();
+    renderRecap();
+    renderList();
+  }
+
+  /* ---------- Form jurnal ---------- */
+  function defaultForm() {
+    $('f-tanggal').value = toISO(new Date());
+    $('f-mulai').value = '08:00';
+    $('f-selesai').value = '16:00';
+    ['kegiatan', 'hasil', 'kendala', 'rencana'].forEach(function (k) { $('f-' + k).value = ''; });
+  }
+  function updateFormMode() {
+    var ed = !!editingId;
+    $('formTitle').textContent = ed ? 'Edit Jurnal' : 'Tambah Jurnal';
+    $('submitBtn').textContent = ed ? 'Simpan Perubahan' : 'Simpan Jurnal';
+    $('cancelBtn').textContent = ed ? 'Batal Edit' : 'Kosongkan Form';
+    $('editNotice').hidden = !ed;
+  }
+  function resetForm() {
+    editingId = null;
+    defaultForm();
+    showErrors({}, 'f-', ENTRY_FIELDS);
+    setFormMsg('');
+    updateFormMode();
+  }
+  function readForm() {
+    return {
+      tanggal: $('f-tanggal').value,
+      mulai: $('f-mulai').value,
+      selesai: $('f-selesai').value,
+      kegiatan: $('f-kegiatan').value.trim(),
+      hasil: $('f-hasil').value.trim(),
+      kendala: $('f-kendala').value.trim(),
+      rencana: $('f-rencana').value.trim()
+    };
+  }
+  function startEdit(id) {
+    var e = findEntry(id);
+    if (!e) { toast('error', 'Jurnal tidak ditemukan.'); return; }
+    editingId = id;
+    ENTRY_FIELDS.forEach(function (k) { $('f-' + k).value = e[k]; });
+    showErrors({}, 'f-', ENTRY_FIELDS);
+    setFormMsg('');
+    updateFormMode();
+    $('editNotice').textContent = 'Sedang mengedit jurnal tanggal ' + fmtShort(e.tanggal) + '.';
+    var fc = $('formCard');
+    if (fc.scrollIntoView) fc.scrollIntoView({ behavior: smooth(), block: 'start' });
+    $('f-tanggal').focus({ preventScroll: true });
+  }
+  function highlight(id) {
+    var kids = $('entryList').children;
+    for (var i = 0; i < kids.length; i++) {
+      if (kids[i].getAttribute('data-id') === id) {
+        kids[i].classList.add('flash');
+        if (kids[i].scrollIntoView) kids[i].scrollIntoView({ behavior: smooth(), block: 'center' });
+        return true;
+      }
+    }
+    return false;
+  }
+
+  $('entryForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var d = readForm();
+    var errs = validateEntry(d);
+    var count = Object.keys(errs).length;
+    var first = showErrors(errs, 'f-', ENTRY_FIELDS);
+    if (count) {
+      var msg = 'Jurnal belum disimpan. Periksa ' + count + ' isian yang ditandai merah.';
+      setFormMsg(msg);
+      toast('error', msg);
+      if (first) first.focus();
+      return;
+    }
+    setFormMsg('');
+    var wasEdit = !!editingId, next, id;
+    if (wasEdit) {
+      var idx = -1;
+      for (var i = 0; i < entries.length; i++) if (entries[i].id === editingId) idx = i;
+      if (idx < 0) {
+        toast('error', 'Jurnal yang diedit sudah tidak ada. Form dikosongkan.');
+        resetForm(); render();
+        return;
+      }
+      id = editingId;
+      next = entries.slice();
+      next[idx] = Object.assign({}, entries[idx], d, { contoh: false });
+    } else {
+      id = newId();
+      next = entries.concat([Object.assign({ id: id, contoh: false, dibuat: Date.now() }, d)]);
+    }
+    if (!commitEntries(next)) return;
+    resetForm();
+    render();
+    var shown = highlight(id);
+    toast('ok', (wasEdit ? 'Perubahan jurnal berhasil disimpan.' : 'Jurnal berhasil ditambahkan.') +
+      (shown ? '' : ' (Tidak tampil di daftar karena filter aktif.)'));
+  });
+  $('cancelBtn').addEventListener('click', function () {
+    var wasEdit = !!editingId;
+    resetForm();
+    toast('info', wasEdit ? 'Edit dibatalkan.' : 'Form dikosongkan.');
+  });
+
+  /* ---------- Daftar: edit / hapus ---------- */
+  $('entryList').addEventListener('click', function (ev) {
+    var b = ev.target.closest ? ev.target.closest('button[data-action]') : null;
+    if (!b) return;
+    var id = b.getAttribute('data-id'), act = b.getAttribute('data-action');
+    if (act === 'edit') startEdit(id);
+    else if (act === 'delete') confirmDelete(id);
+  });
+  function confirmDelete(id) {
+    var e = findEntry(id);
+    if (!e) { toast('error', 'Jurnal tidak ditemukan.'); return; }
+    askConfirm({
+      title: 'Hapus jurnal ini?',
+      message: 'Jurnal tanggal ' + fmtShort(e.tanggal) + ' (' + e.mulai + '–' + e.selesai + ') akan dihapus permanen dan tidak dapat dikembalikan.',
+      okLabel: 'Ya, hapus', danger: true,
+      onConfirm: function () {
+        var next = entries.filter(function (x) { return x.id !== id; });
+        if (!commitEntries(next)) return;
+        if (editingId === id) resetForm();
+        render();
+        toast('ok', 'Jurnal berhasil dihapus.');
+        $('listTitle').focus();
+      }
+    });
+  }
+
+  /* ---------- Pencarian & filter ---------- */
+  function resetFilter() {
+    $('q').value = ''; $('fromDate').value = ''; $('toDate').value = '';
+    renderList();
+  }
+  $('q').addEventListener('input', renderList);
+  $('fromDate').addEventListener('input', renderList);
+  $('toDate').addEventListener('input', renderList);
+  $('fromDate').addEventListener('change', renderList);
+  $('toDate').addEventListener('change', renderList);
+  $('btnResetFilter').addEventListener('click', function () {
+    resetFilter();
+    toast('info', 'Filter direset.');
+  });
+  $('emptyBox').addEventListener('click', function (ev) {
+    var b = ev.target.closest ? ev.target.closest('button[data-action]') : null;
+    if (!b) return;
+    var act = b.getAttribute('data-action');
+    if (act === 'reset-filter') resetFilter();
+    else if (act === 'load-sample') {
+      if (seedSample()) { render(); toast('ok', 'Data contoh dimuat. Anda dapat menghapusnya kapan saja.'); }
+      else toast('error', 'Gagal memuat data contoh: penyimpanan browser bermasalah.');
+    }
+  });
+
+  /* ---------- Identitas ---------- */
+  $('btnProfile').addEventListener('click', function () {
+    PROFILE_FIELDS.forEach(function (k) { $('p-' + k).value = profile[k] || ''; });
+    showErrors({}, 'p-', PROFILE_FIELDS);
+    openModal($('profileModal'));
+  });
+  $('profileForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var d = {};
+    PROFILE_FIELDS.forEach(function (k) { d[k] = $('p-' + k).value.trim(); });
+    var errs = validateProfile(d);
+    var count = Object.keys(errs).length;
+    var first = showErrors(errs, 'p-', PROFILE_FIELDS);
+    if (count) {
+      toast('error', 'Identitas belum disimpan. Periksa ' + count + ' isian yang ditandai merah.');
+      if (first) first.focus();
+      return;
+    }
+    d.contoh = false;
+    if (!commitProfile(normalizeProfile(d))) return;
+    closeModal();
+    render();
+    toast('ok', 'Identitas berhasil disimpan.');
+  });
+
+  /* ---------- Cetak ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-print]'), function (b) {
+    b.addEventListener('click', function () {
+      var r = getFiltered();
+      if (r.err) { toast('error', r.err + ' Perbaiki filter sebelum mencetak.'); return; }
+      if (!r.list.length) { toast('error', 'Tidak ada jurnal untuk dicetak. Tambahkan jurnal atau ubah filter.'); return; }
+      renderPrint(r);
+      window.print();
+    });
+  });
+
+  /* ---------- Ekspor / impor / hapus contoh ---------- */
+  $('btnExport').addEventListener('click', function () {
+    if (!entries.length && isProfileEmpty(profile)) { toast('error', 'Belum ada data untuk diekspor.'); return; }
+    try {
+      var payload = { aplikasi: 'Jurnal PKL RPL - SMKN 2 Cipatujah', versi: 1, diekspor: new Date().toISOString(), identitas: profile, jurnal: entries };
+      var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'jurnal-pkl-' + toISO(new Date()) + '.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+      toast('ok', 'Cadangan diekspor (' + entries.length + ' jurnal).');
+    } catch (e) {
+      toast('error', 'Gagal membuat file cadangan.');
+    }
+  });
+  $('btnImport').addEventListener('click', function () { $('importFile').click(); });
+  $('importFile').addEventListener('change', function () {
+    var input = this;
+    var f = input.files && input.files[0];
+    input.value = '';
+    if (!f) return;
+    if (f.size > 2 * 1024 * 1024) { toast('error', 'File terlalu besar (maksimal 2 MB).'); return; }
+    var rd = new FileReader();
+    rd.onerror = function () { toast('error', 'File tidak dapat dibaca.'); };
+    rd.onload = function () {
+      var data;
+      try { data = JSON.parse(rd.result); } catch (e) { toast('error', 'File bukan JSON yang valid.'); return; }
+      var arr = Array.isArray(data) ? data : (data && data.jurnal);
+      if (!Array.isArray(arr)) { toast('error', 'Format cadangan tidak dikenali.'); return; }
+      var good = [], skipped = 0;
+      arr.forEach(function (o) { var n = normalizeEntry(o); if (n) good.push(n); else skipped++; });
+      if (!good.length) { toast('error', 'Tidak ada jurnal valid di dalam file.'); return; }
+      var prof = (data && !Array.isArray(data) && data.identitas && typeof data.identitas === 'object') ? normalizeProfile(data.identitas) : null;
+      if (prof && isProfileEmpty(prof)) prof = null;
+      askConfirm({
+        title: 'Impor cadangan?',
+        message: good.length + ' jurnal akan digabungkan dengan data saat ini (jurnal dengan ID sama diperbarui)' +
+          (prof ? ', dan identitas PKL akan diganti dengan identitas dari file' : '') + '.' +
+          (skipped ? ' ' + skipped + ' entri tidak valid dilewati.' : ''),
+        okLabel: 'Ya, impor', danger: false,
+        onConfirm: function () {
+          var map = {};
+          entries.forEach(function (e) { map[e.id] = e; });
+          good.forEach(function (e) { map[e.id] = e; });
+          var merged = Object.keys(map).map(function (k) { return map[k]; });
+          if (!commitEntries(merged)) return;
+          if (prof) commitProfile(prof);
+          render();
+          toast('ok', 'Impor selesai: ' + good.length + ' jurnal diproses.');
+        }
+      });
+    };
+    rd.readAsText(f);
+  });
+  $('btnClearSample').addEventListener('click', function () {
+    var n = entries.filter(function (e) { return e.contoh; }).length;
+    var hasProf = !!profile.contoh;
+    if (!n && !hasProf) { toast('info', 'Tidak ada data contoh yang tersisa.'); return; }
+    askConfirm({
+      title: 'Hapus data contoh?',
+      message: n + ' jurnal contoh' + (hasProf ? ' dan identitas contoh' : '') + ' akan dihapus. Data yang Anda buat atau ubah sendiri tidak ikut terhapus.',
+      okLabel: 'Ya, hapus', danger: true,
+      onConfirm: function () {
+        var next = entries.filter(function (e) { return !e.contoh; });
+        if (!commitEntries(next)) return;
+        if (hasProf) commitProfile(normalizeProfile({}));
+        if (editingId && !findEntry(editingId)) resetForm();
+        render();
+        toast('ok', 'Data contoh dihapus.' + (hasProf ? ' Isi identitas Anda lewat tombol "Ubah Identitas".' : ''));
+      }
+    });
+  });
+
+  /* ---------- Sinkron antar-tab ---------- */
+  function reloadFromStorage() {
+    var rawE = load(KEY_ENTRIES, []);
+    entries = (Array.isArray(rawE) ? rawE : []).map(normalizeEntry).filter(Boolean);
+    profile = normalizeProfile(load(KEY_PROFILE, {}));
+  }
+  window.addEventListener('storage', function (ev) {
+    if (ev.key === KEY_ENTRIES || ev.key === KEY_PROFILE) {
+      reloadFromStorage();
+      if (editingId && !findEntry(editingId)) resetForm();
+      render();
+    }
+  });
+
+  /* ---------- Mulai ---------- */
+  reloadFromStorage();
+  if (!load(KEY_SEEDED, false)) {
+    if (!entries.length && isProfileEmpty(profile)) seedSample();
+    save(KEY_SEEDED, true);
+  }
+  if (!storageOK) $('storageWarn').hidden = false;
+  resetForm();
+  render();
+})();
+</script>
+</body>
+</html>
